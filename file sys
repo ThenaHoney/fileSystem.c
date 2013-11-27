@@ -1,5 +1,3 @@
-fileSystem.c
-============
 /**
  * Emulates a file system.
  *
@@ -131,7 +129,7 @@ fd_t* openf(char* name)
 	//printInodesTest(nodep);
 	// file not found, create one
 	writeSuperBlock(spB);
-	writeInode(nodep,spB->_firstBlockOfFreeList)
+	writeInode(nodep,spB->_firstBlockOfFreeList);
 	return temp;
 }
 
@@ -157,9 +155,13 @@ int readf(fd_t* stream, char* data, int size)
 
 int writef(fd_t* stream, char* data, int size)
 {
+	superBlock_t* spB;
+	inode_t* nodep;
 	if (stream)
 	{
 	openf(stream);
+	writeSuperBlock(spB);
+	writeInode(nodep, spB->_firstBlockOfFreeList );
 	return 0;
 	}
 	else
