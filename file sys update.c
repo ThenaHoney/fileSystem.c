@@ -1,5 +1,3 @@
-fileSystem.c
-============
 /**
  * Emulates a file system.
  *
@@ -411,6 +409,15 @@ void printInodes()
 void printFreeBlocks()
 {
 	// implement this function
+	inode_t* nodep;
+	int i;
+	for(i=1;i<17;i++)
+	{
+		readInode(nodep,i);
+		if (nodep->_flags == 0)
+			//printf(""); printblock
+	}
+
 }
 
 
